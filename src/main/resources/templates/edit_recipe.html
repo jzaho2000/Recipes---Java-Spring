@@ -1,0 +1,217 @@
+<! DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Edit Recipe</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+	<div>
+		
+		
+		<div class="page_haeder">
+			<div class="page_header_logout">
+				<form th:action="@{/logout}" method="post">
+					<input type="submit" value="Sign Out" class="btn btn-logout"/>
+				</form>
+			</div>
+			<div class="page_header_links">
+				<span class="nav"><a href="../recipes">Recipies</a></span>
+				<span class="nav"><a href="../suggestions">Suggestions</a></span>
+				<span class="nav"><a href="../foodcloset">Food closet</a></span>
+				<span class="nav"><a href="../materials">Materials settings</a></span>
+				<span class="nav"><a href="../measurements">Measurement settings</a></span>
+			
+			</div>
+		
+		</div>
+		
+		
+		<div>
+		
+			<h2>Edit Recipe</h2>
+			<form th:action="@{/edit_recipeheader}" action="#" method="post">
+					<div class="error" th:if="${forms}==1"><span th:text="${errors}"></span></div>
+					<div class="notice" th:if="${forms}==1"><span th:text="${notices}"></span></div>
+					<b class="recipe_edit_form_header">Header information</b><br /><br />
+					<input type="hidden" name="recipe_id" th:value="${recipes.recipe_id}" />
+					<table>
+					  <tr><td><label>Title: </label></td><td><input type="text" name="title" th:value="${recipes.title}" /></td></tr>
+					  <tr><td><label>Portion size: </label></td><td><input type="text" name="portionsize" th:value="${recipes.portionsize}" /></td></tr>
+					  <tr><td><label>Time: </label></td><td><input type="text" name="minutes" th:value="${recipes.minutes}" /></td></tr>
+					</table>
+				 	<br></br>
+					<input type="submit" value="Save header"/>
+			</form>
+
+
+			<form th:action="@{/edit_recipeingredients}" action="#" method="post">
+				<div class="error" th:if="${forms}==2"><span th:text="${errors}"></span></div>
+				<div class="notice" th:if="${forms}==2"><span th:text="${notices}"></span></div>
+				<b class="recipe_edit_form_header">Ingredients</b><br /><br />
+				<input type="hidden" name="recipe_id" th:value="${recipes.recipe_id}" />
+				
+				<table>
+						<tr>
+							<th>Amount</th>
+							<th>Measure</th>
+							<th>Material</th>
+						</tr>
+						
+						<tr th:each="ing : ${ingredients}">
+							<td><input type="text" th:name="'amount[' + ${ing.ingredient_id} + ']'" th:value="${ing.getAmountStr}"/></td>
+							<td>
+								<select th:name="'measure[' + ${ing.ingredient_id} + ']'"  />				
+									<option th:each="me : ${measurements}" th:value=${me.measure_id} th:text="${me.measure}" th:selected="${me.measure_id==ing.measurements.measure_id}"></option>							
+							    </select>
+							</td>
+							<td>
+								<select th:name="'material[' + ${ing.ingredient_id} + ']'"  />				
+									<option th:each="ma : ${materials}" th:value=${ma.material_id} th:text="${ma.name}" th:selected="${ma.material_id==ing.materials.material_id}"></option>							
+							    </select>
+							</td>
+						</tr>
+						
+						<tr>
+							<td><input type="text" name="addamount[1]" value="0"/></td>
+							<td>
+								<select name="addmeasure[1]" />
+								    <option value="0" selected>(empty)</option>				
+									<option th:each="me : ${measurements}" th:value=${me.measure_id} th:text="${me.measure}"></option>							
+							    </select>
+							</td>
+							<td>
+								<select th:name="addmaterial[1]"  />
+									<option value="0" selected>(empty)</option>				
+									<option th:each="ma : ${materials}" th:value=${ma.material_id} th:text="${ma.name}"></option>							
+							    </select>
+							</td>
+						</tr>
+						
+						<tr>
+							<td><input type="text" name="addamount[2]" value="0"/></td>
+							<td>
+								<select name="addmeasure[2]" />
+								    <option value="0" selected>(empty)</option>				
+									<option th:each="me : ${measurements}" th:value=${me.measure_id} th:text="${me.measure}"></option>							
+							    </select>
+							</td>
+							<td>
+								<select th:name="addmaterial[2]"  />
+									<option value="0" selected>(empty)</option>				
+									<option th:each="ma : ${materials}" th:value=${ma.material_id} th:text="${ma.name}"></option>							
+							    </select>
+							</td>
+						</tr>
+						
+						
+						<tr>
+							<td><input type="text" name="addamount[3]" value="0"/></td>
+							<td>
+								<select name="addmeasure[3]" />
+								    <option value="0" selected>(empty)</option>				
+									<option th:each="me : ${measurements}" th:value=${me.measure_id} th:text="${me.measure}"></option>							
+							    </select>
+							</td>
+							<td>
+								<select th:name="addmaterial[3]"  />
+									<option value="0" selected>(empty)</option>				
+									<option th:each="ma : ${materials}" th:value=${ma.material_id} th:text="${ma.name}"></option>							
+							    </select>
+							</td>
+						</tr>
+						
+						<tr>
+							<td><input type="text" name="addamount[4]" value="0"/></td>
+							<td>
+								<select name="addmeasure[4]" />
+								    <option value="0" selected>(empty)</option>				
+									<option th:each="me : ${measurements}" th:value=${me.measure_id} th:text="${me.measure}"></option>							
+							    </select>
+							</td>
+							<td>
+								<select th:name="addmaterial[4]"  />
+									<option value="0" selected>(empty)</option>				
+									<option th:each="ma : ${materials}" th:value=${ma.material_id} th:text="${ma.name}"></option>							
+							    </select>
+							</td>
+						</tr>
+						
+						
+						
+						<tr>
+							<td><input type="text" name="addamount[5]" value="0"/></td>
+							<td>
+								<select name="addmeasure[5]" />
+								    <option value="0" selected>(empty)</option>				
+									<option th:each="me : ${measurements}" th:value=${me.measure_id} th:text="${me.measure}"></option>							
+							    </select>
+							</td>
+							<td>
+								<select th:name="addmaterial[5]"  />
+									<option value="0" selected>(empty)</option>				
+									<option th:each="ma : ${materials}" th:value=${ma.material_id} th:text="${ma.name}"></option>							
+							    </select>
+							</td>
+						</tr>
+						
+						
+				</table>
+					
+				<!--  
+					
+					
+					<table>
+						<tr>
+							<th>Amount</th>
+							<th>Measure</th>
+							<th>Material</th>
+						</tr>
+						
+						<tr th:each="ingredient: ${ingredients}">
+							<td><input type="text" name="amount$*{ingredient_id}" th:field="*{amount}"/></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					
+					</table>
+				-->
+				
+				
+				<br></br>
+				<input type="submit" value="Save ingredients"/>
+			</form>
+
+			
+			
+			<form th:action="@{/edit_recipeinstruction}" action="#" method="post">
+				<div class="error" th:if="${forms}==3"><span th:text="${errors}"></span></div>
+				<div class="notice" th:if="${forms}==3"><span th:text="${notices}"></span></div>
+				<label>Instructions</label><br />
+					<input type="hidden" name="recipe_id" th:value="${recipes.recipe_id}" />
+					<textarea rows="20" cols="80" name="instructions" th:text="${recipes.recipe}"></textarea>
+				 	<br></br>
+					<input type="submit" value="Save Instruction"/>
+			</form>
+			
+
+			
+		</div>
+		
+	
+		
+		
+		
+		
+		
+		
+	</div>
+
+	
+
+	
+	
+</body>
+</html>

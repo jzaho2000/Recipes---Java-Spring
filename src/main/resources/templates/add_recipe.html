@@ -1,0 +1,256 @@
+<! DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Add Recipe</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+	<div>
+		
+		
+		<div class="page_haeder">
+			<div class="page_header_logout">
+				<form th:action="@{/logout}" method="post">
+					<input type="submit" value="Sign Out" class="btn btn-logout"/>
+				</form>
+			</div>
+			<div class="page_header_links">
+				<span class="nav"><a href="/recipes">Recipies</a></span>
+				<span class="nav"><a href="/suggestions">Suggestions</a></span>
+				<span class="nav"><a href="/foodcloset">Food closet</a></span>
+				<span class="nav"><a href="/materials">Materials settings</a></span>
+				<span class="nav"><a href="/measurements">Measurement settings</a></span>
+			
+			</div>
+		
+		</div>
+		
+		
+		<div>
+		
+			<h2>Add Recipe</h2>
+			<form th:action="@{/add_recipe}" action="#" method="post">
+					<div class="error" th:text="${erros}"></div>
+					<div class="notice" th:text="${notices}"></div>
+					<b class="recipe_edit_form_header">Header information</b><br /><br />
+					<table>
+					  <tr><td><label>Title: </label></td><td><input type="text" name="title"  /></td></tr>
+					  <tr><td><label>Portion size: </label></td><td><input type="text" name="portionsize"  /></td></tr>
+					  <tr><td><label>Time: </label></td><td><input type="text" name="minutes"  /></td></tr>
+					</table>
+				 	<br></br>
+
+				<b class="recipe_edit_form_header">Ingredients</b><br /><br />
+
+				
+				<table>
+						<tr>
+							<th>Amount</th>
+							<th>Measure</th>
+							<th>Material</th>
+						</tr>
+						
+						
+						
+						<tr>
+							<td><input type="text" name="addamount[1]" value="0"/></td>
+							<td>
+								<select name="addmeasure[1]" />
+								    <option value="0" selected>(empty)</option>				
+									<option th:each="me : ${measurements}" th:value=${me.measure_id} th:text="${me.measure}"></option>							
+							    </select>
+							</td>
+							<td>
+								<select th:name="addmaterial[1]"  />
+									<option value="0" selected>(empty)</option>				
+									<option th:each="ma : ${materials}" th:value=${ma.material_id} th:text="${ma.name}"></option>							
+							    </select>
+							</td>
+						</tr>
+						
+						<tr>
+							<td><input type="text" name="addamount[2]" value="0"/></td>
+							<td>
+								<select name="addmeasure[2]" />
+								    <option value="0" selected>(empty)</option>				
+									<option th:each="me : ${measurements}" th:value=${me.measure_id} th:text="${me.measure}"></option>							
+							    </select>
+							</td>
+							<td>
+								<select th:name="addmaterial[2]"  />
+									<option value="0" selected>(empty)</option>				
+									<option th:each="ma : ${materials}" th:value=${ma.material_id} th:text="${ma.name}"></option>							
+							    </select>
+							</td>
+						</tr>
+						
+						
+						<tr>
+							<td><input type="text" name="addamount[3]" value="0"/></td>
+							<td>
+								<select name="addmeasure[3]" />
+								    <option value="0" selected>(empty)</option>				
+									<option th:each="me : ${measurements}" th:value=${me.measure_id} th:text="${me.measure}"></option>							
+							    </select>
+							</td>
+							<td>
+								<select th:name="addmaterial[3]"  />
+									<option value="0" selected>(empty)</option>				
+									<option th:each="ma : ${materials}" th:value=${ma.material_id} th:text="${ma.name}"></option>							
+							    </select>
+							</td>
+						</tr>
+						
+						<tr>
+							<td><input type="text" name="addamount[4]" value="0"/></td>
+							<td>
+								<select name="addmeasure[4]" />
+								    <option value="0" selected>(empty)</option>				
+									<option th:each="me : ${measurements}" th:value=${me.measure_id} th:text="${me.measure}"></option>							
+							    </select>
+							</td>
+							<td>
+								<select th:name="addmaterial[4]"  />
+									<option value="0" selected>(empty)</option>				
+									<option th:each="ma : ${materials}" th:value=${ma.material_id} th:text="${ma.name}"></option>							
+							    </select>
+							</td>
+						</tr>
+						
+						
+						
+						<tr>
+							<td><input type="text" name="addamount[5]" value="0"/></td>
+							<td>
+								<select name="addmeasure[5]" />
+								    <option value="0" selected>(empty)</option>				
+									<option th:each="me : ${measurements}" th:value=${me.measure_id} th:text="${me.measure}"></option>							
+							    </select>
+							</td>
+							<td>
+								<select th:name="addmaterial[5]"  />
+									<option value="0" selected>(empty)</option>				
+									<option th:each="ma : ${materials}" th:value=${ma.material_id} th:text="${ma.name}"></option>							
+							    </select>
+							</td>
+						</tr>
+						
+						
+						<tr>
+							<td><input type="text" name="addamount[6]" value="0"/></td>
+							<td>
+								<select name="addmeasure[6]" />
+								    <option value="0" selected>(empty)</option>				
+									<option th:each="me : ${measurements}" th:value=${me.measure_id} th:text="${me.measure}"></option>							
+							    </select>
+							</td>
+							<td>
+								<select th:name="addmaterial[6]"  />
+									<option value="0" selected>(empty)</option>				
+									<option th:each="ma : ${materials}" th:value=${ma.material_id} th:text="${ma.name}"></option>							
+							    </select>
+							</td>
+						</tr>
+						
+						<tr>
+							<td><input type="text" name="addamount[7]" value="0"/></td>
+							<td>
+								<select name="addmeasure[7]" />
+								    <option value="0" selected>(empty)</option>				
+									<option th:each="me : ${measurements}" th:value=${me.measure_id} th:text="${me.measure}"></option>							
+							    </select>
+							</td>
+							<td>
+								<select th:name="addmaterial[7]"  />
+									<option value="0" selected>(empty)</option>				
+									<option th:each="ma : ${materials}" th:value=${ma.material_id} th:text="${ma.name}"></option>							
+							    </select>
+							</td>
+						</tr>
+						
+						
+						
+						<tr>
+							<td><input type="text" name="addamount[8]" value="0"/></td>
+							<td>
+								<select name="addmeasure[8]" />
+								    <option value="0" selected>(empty)</option>				
+									<option th:each="me : ${measurements}" th:value=${me.measure_id} th:text="${me.measure}"></option>							
+							    </select>
+							</td>
+							<td>
+								<select th:name="addmaterial[8]"  />
+									<option value="0" selected>(empty)</option>				
+									<option th:each="ma : ${materials}" th:value=${ma.material_id} th:text="${ma.name}"></option>							
+							    </select>
+							</td>
+						</tr>
+						
+						
+						<tr>
+							<td><input type="text" name="addamount[9]" value="0"/></td>
+							<td>
+								<select name="addmeasure[9]" />
+								    <option value="0" selected>(empty)</option>				
+									<option th:each="me : ${measurements}" th:value=${me.measure_id} th:text="${me.measure}"></option>							
+							    </select>
+							</td>
+							<td>
+								<select th:name="addmaterial[9]"  />
+									<option value="0" selected>(empty)</option>				
+									<option th:each="ma : ${materials}" th:value=${ma.material_id} th:text="${ma.name}"></option>							
+							    </select>
+							</td>
+						</tr>
+						
+						
+						<tr>
+							<td><input type="text" name="addamount[10]" value="0"/></td>
+							<td>
+								<select name="addmeasure[10]" />
+								    <option value="0" selected>(empty)</option>				
+									<option th:each="me : ${measurements}" th:value=${me.measure_id} th:text="${me.measure}"></option>							
+							    </select>
+							</td>
+							<td>
+								<select th:name="addmaterial[10]"  />
+									<option value="0" selected>(empty)</option>				
+									<option th:each="ma : ${materials}" th:value=${ma.material_id} th:text="${ma.name}"></option>							
+							    </select>
+							</td>
+						</tr>
+						
+				</table>
+					
+				
+				
+				
+				<br></br>
+
+
+				<label>Instructions</label><br />
+					<textarea rows="20" cols="80" name="instructions"></textarea>
+				 	<br></br>
+					<input type="submit" value="Save Recipe"/>
+			</form>
+			
+
+			
+		</div>
+		
+	
+		
+		
+		
+		
+		
+		
+	</div>
+
+	
+
+	
+	
+</body>
+</html>

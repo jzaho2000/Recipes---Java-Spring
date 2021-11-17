@@ -1,0 +1,70 @@
+<! DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Materials list</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div>
+		
+		
+		<div class="page_haeder">
+			<div class="page_header_logout">
+				<form th:action="@{/logout}" method="post">
+					<input type="submit" value="Sign Out" class="btn btn-logout"/>
+				</form>
+			</div>
+			<div class="page_header_links">
+				<span class="nav"><a href="/recipes">Recipies</a></span>
+				<span class="nav"><a href="/suggestions">Suggestions</a></span>
+				<span class="nav"><a href="/foodcloset">Food closet</a></span>
+				<span class="nav"><a href="/materials">Materials settings</a></span>
+				<span class="nav"><a href="/measurements">Measurement settings</a></span>
+			
+			</div>
+		
+		</div>
+		
+		<div class="add_materials">
+			<h2>Add Materials</h2>
+			<form th:object="${addmaterial}" th:action="@{/addmaterial}" action="#" method="post">
+				<div class="error" th:text="${errors}"></div>
+				<div class="notice" th:text="${notices}"></div>
+				<label>Material: </label>
+				<input type="text" id="name" name="name" th:field="*{name}"/>
+				<input type="submit" value="Save"/>
+			</form>
+		</div>
+		
+		
+		
+		
+		
+		
+		<div class="materials_list">
+			<h2>Materials list</h2>
+			<table>
+				<tr>
+					<th class="tl">Material</th>
+					<th></th>
+					<th></th>
+				</tr>
+				
+				<tr th:each="m: ${materials}">
+					<td class="tl"><span th:text="${m.name}"></span></td>
+					<td class="tc tspaces"><a th:href="@{/edit_material/{id}(id=${m.material_id})}">Edit</a></td>
+					<td class="tc"><a th:href="@{/delete_material/{id}(id=${m.material_id})}">Delete</a></td>
+					
+
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	
+
+	
+	
+</body>
+</html>

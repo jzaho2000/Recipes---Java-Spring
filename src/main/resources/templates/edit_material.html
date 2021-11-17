@@ -1,0 +1,54 @@
+<! DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Edit Materials</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+	<div>
+		
+		
+		<div class="page_haeder">
+			<div class="page_header_logout">
+				<form th:action="@{/logout}" method="post">
+					<input type="submit" value="Sign Out" class="btn btn-logout"/>
+				</form>
+			</div>
+			<div class="page_header_links">
+				<span class="nav"><a href="/recipes">Recipies</a></span>
+				<span class="nav"><a href="/suggestions">Suggestions</a></span>
+				<span class="nav"><a href="/foodcloset">Food closet</a></span>
+				<span class="nav"><a href="/materials">Materials settings</a></span>
+				<span class="nav"><a href="/measurements">Measurement settings</a></span>
+			
+			</div>
+		
+		</div>
+		
+		
+		
+		<h2>Edit Material</h2>
+	
+		
+		<form th:object="${material}" th:action="@{/edit_material}" action="#" method="post">
+				<div class="error" th:text="${errors}"></div>
+				
+				<input type="hidden" name="id" th:field="*{material_id}" />
+				<label>Name: </label>
+				<input type="text" name="name" th:field="*{name}"/>
+				<input type="submit" value="Save changes"/>
+		</form>
+		
+		
+		
+		
+		
+	</div>
+
+	
+
+	
+	
+</body>
+</html>

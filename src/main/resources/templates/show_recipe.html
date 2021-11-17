@@ -1,0 +1,70 @@
+<! DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<title>recipe</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+	<div>
+		
+		
+		<div class="page_haeder">
+			<div class="page_header_logout">
+				<form th:action="@{/logout}" method="post">
+					<input type="submit" value="Sign Out" class="btn btn-logout"/>
+				</form>
+			</div>
+			<div class="page_header_links">
+				<span class="nav"><a href="../recipes">Recipies</a></span>
+				<span class="nav"><a href="../suggestions">Suggestions</a></span>
+				<span class="nav"><a href="../foodcloset">Food closet</a></span>
+				<span class="nav" sec:authorize="hasAuthority('ADMIN')"><a href="../materials">Materials settings</a></span>
+				<span class="nav" sec:authorize="hasAuthority('ADMIN')"><a href="../measurements">Measurement settings</a></span>
+			
+			</div>
+		
+		</div>
+		
+		
+		<div>
+			<h2 th:text="${recipe.title}"></h2>
+			
+			<div class="quick_data">
+				<span th:text="${recipe.portionsize}"></span> <span class="quick_data_space">annosta</span>
+				<span th:text="${recipe.minutes}"></span><span> minuuttia</span>
+			</div>
+			
+			<h3>Raaka-aineet</h3>
+			<p class="recipe_ingredients">
+				<table>
+					<tr th:each="ingredient: ${recipe.ingredients}">
+						<td class="tc recipe_amount"><span th:text="${ingredient.getAmountStr()}"></span></td>
+						<td class="tl recipe_measure"><span th:text="${ingredient.measurements.short_text}"></span></td>
+						<td class="recipe_material"><span th:text="${ingredient.materials.name}"></span></td>
+					</tr>
+				</table>
+			</p>			
+			
+			<h3>Ohjeet</h3>
+			<p class="recipe_instructions" th:text="${#strings.replace(recipe.recipe, '\n', '<br />')}"></p>
+			
+			
+			
+		</div>
+		
+	
+		
+		
+		
+		
+		
+		
+	</div>
+
+	
+
+	
+	
+</body>
+</html>

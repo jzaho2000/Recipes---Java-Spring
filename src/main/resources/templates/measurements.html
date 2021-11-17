@@ -1,0 +1,76 @@
+<! DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Measuremenets list</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div>
+		
+		
+		<div class="page_haeder">
+			<div class="page_header_logout">
+				<form th:action="@{/logout}" method="post">
+					<input type="submit" value="Sign Out" class="btn btn-logout"/>
+				</form>
+			</div>
+			<div class="page_header_links">
+				<span class="nav"><a href="/recipes">Recipies</a></span>
+				<span class="nav"><a href="/suggestions">Suggestions</a></span>
+				<span class="nav"><a href="/foodcloset">Food closet</a></span>
+				<span class="nav"><a href="/materials">Materials settings</a></span>
+				<span class="nav"><a href="/measurements">Measurement settings</a></span>
+			
+			</div>
+		
+		</div>
+		
+		<div class="add_measurements">
+			<h2>Add Measure</h2>
+			<form th:object="${addmeasure}" th:action="@{/addmeasure}" action="#" method="post">
+				<div class="error" th:text="${errors}"></div>
+				<div class="notice" th:text="${notices}"></div>
+				<label>Measure: </label>
+				<input type="text" id="measure" name="measure" th:field="*{measure}"/><br/>
+				<label>Shortened: </label>
+				<input type="text" id="short_text" name="short_text" th:field="*{short_text}" /><br/>
+				<br/>
+				<br/>
+				<input type="submit" value="Save"/>
+			</form>
+		</div>
+		
+		
+		
+		
+		
+		
+		<div class="measurements_list">
+			<h2>Measurements list</h2>
+			<table>
+				<tr>
+					<th class="tl">Measurements</th>
+					<th class="tc">Short</th>
+					<th></th>
+					<th></th>
+				</tr>
+				
+				<tr th:each="m: ${measurements}">
+					<td class="tl"><span th:text="${m.measure}"></span></td>
+					<td class="tc"><span th:text="${m.short_text}"></td>
+					<td class="tc spaces"><a th:href="@{/edit_measurement/{id}(id=${m.measure_id})}">Edit</a></td>
+					<td class="tc"><a th:href="@{/delete_measurement/{id}(id=${m.measure_id})}">Delete</a></td>
+					
+
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	
+
+	
+	
+</body>
+</html>

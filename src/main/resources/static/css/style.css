@@ -1,0 +1,47 @@
+th {
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-right: 10px;
+	font-weight: bold;
+}
+
+td {
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-right: 10px;
+}
+
+.btext {
+	font-weight: bold;
+}
+
+.tl {
+	text-align: left;
+}
+
+.tc {
+	text-align: center;
+}
+
+.tspaces {
+	margin-right: 25px;
+}
+
+.notice {
+	color: green;
+	text-weight: bold;
+}
+
+.error {
+	color:red;
+	text-weight: bold;
+}
+
+.nav, .nav a {
+	right-margin: 20px;
+	left_margin: 20px;
+	padding: 15px 5px 15px 5px;
+	backgroud: green;
+	color:black;
+	text-weight: bold;
+}

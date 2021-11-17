@@ -1,0 +1,61 @@
+<! DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<title>Add Content to Food Closet</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div>
+		
+		
+		<div class="page_haeder">
+			<div class="page_header_logout">
+				<form th:action="@{/logout}" method="post">
+					<input type="submit" value="Sign Out" class="btn btn-logout"/>
+				</form>
+			</div>
+			<div class="page_header_links">
+				<span class="nav"><a href="/recipes">Recipies</a></span>
+				<span class="nav"><a href="/suggestions">Suggestions</a></span>
+				<span class="nav"><a href="/foodcloset">Food closet</a></span>
+				<span class="nav" sec:authorize="hasAuthority('ADMIN')"><a href="/materials">Materials settings</a></span>
+				<span class="nav" sec:authorize="hasAuthority('ADMIN')"><a href="/measurements">Measurement settings</a></span>
+			
+			</div>
+		
+		</div>
+				
+		
+		<div class="materials_list">
+			<h2>Add content to food closet</h2>
+			<form th:action="@{/add_foodcloset}" action="#" method="post">
+			
+				<div class="error" th:text="${erros}"></div>
+				<div class="notice" th:text="${notices}"></div>
+				
+				<table>
+					<tr th:each="i: ${#numbers.sequence(1,10,1)}">
+						<td>
+							<select th:name="'addmaterial[' + ${i} + ']'">
+								<option value="0" selected>(empty)</option>
+								<option th:each="ma : ${materials}" th:value=${ma.material_id} th:text="${ma.name}"></option>
+							</select>
+						</td>
+					
+					</tr>
+					
+	
+				</table>
+				<br />
+				<input type="submit" value="Add materials"/>
+			</form>
+		</div>
+	</div>
+
+	
+
+	
+	
+</body>
+</html>
